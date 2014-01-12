@@ -1,3 +1,6 @@
+include:
+  - supervisor_latest
+
 ii-bot_pkg:
   pkg.installed:
     - name: ii
