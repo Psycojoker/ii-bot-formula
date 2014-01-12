@@ -16,6 +16,7 @@ ii:
 
 {{ bot.name }}_reconnection_loop_script:
   file.managed:
+    - name: /var/ii/{{ bot.name }}/reconnection.sh
     - source: salt://ii-bot/reconnection.sh
     - template: jinja
     - context:
