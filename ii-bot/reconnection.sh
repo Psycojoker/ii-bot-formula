@@ -5,7 +5,7 @@ do
     {% for chan in bot.get(chans, []) %}
     (sleep 5; echo "/j {{ chan }}" > irc/irc.freenode.net/in) &
     {% endfor %}
-    ii \\\\
+    ii \
         -i "irc" \
         -s "irc.freenode.net" \
         -p "6667" \
