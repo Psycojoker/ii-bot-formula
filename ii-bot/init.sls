@@ -19,6 +19,8 @@ ii:
     - name: /var/ii/{{ bot.name }}/reconnection.sh
     - source: salt://ii-bot/reconnection.sh
     - template: jinja
+    - user: ii
+    - group: ii
     - context:
       bot: {{ bot }}
     - watch_in:
@@ -34,6 +36,8 @@ ii:
   file.managed:
     - source: salt://ii-bot/supervisor.conf
     - template: jinja
+    - user: ii
+    - group: ii
     - context:
       bot: {{ bot }}
     - watch_in:
