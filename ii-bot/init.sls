@@ -20,7 +20,7 @@ ii:
     - source: salt://ii-bot/reconnection.sh
     - template: jinja
     - context:
-      bot: bot
+      bot: {{ bot }}
     - watch_in:
       - cmd: {{ bot.name }}restart_reconnection_loop
 
@@ -35,7 +35,7 @@ ii:
     - source: salt://ii-bot/supervisor.conf
     - template: jinja
     - context:
-      bot: bot
+      bot: {{ bot }}
     - watch_in:
       - cmd: supervisor_latest-update
     - require:
