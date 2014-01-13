@@ -28,6 +28,8 @@ ii:
       server_address: {{ server_address }}
     - watch_in:
       - cmd: {{ bot.name }}_{{ server_address|replace(".", "_") }}_restart_reconnection_loop
+    - require_in:
+      - file: /etc/supervisor/conf.d/{{ bot.name }}.conf
 
 {{ bot.name }}_{{ server_address|replace(".", "_") }}_restart_reconnection_loop:
   cmd.wait:
@@ -46,6 +48,4 @@ ii:
       bot: {{ bot }}
     - watch_in:
       - cmd: supervisor_latest-update
-    - require:
-      - file: {{ bot.name }}_reconnection_loop_script
 {% endfor %}
