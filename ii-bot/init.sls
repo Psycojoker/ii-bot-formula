@@ -27,13 +27,13 @@ ii:
       server: {{ server }}
       server_address: {{ server_address }}
     - watch_in:
-      - cmd: {{ bot.name }}restart_reconnection_loop
+      - cmd: {{ bot.name }}_{{ server_address|replace(".", "_") }}_restart_reconnection_loop
 
 {{ bot.name }}_{{ server_address|replace(".", "_") }}_restart_reconnection_loop:
   cmd.wait:
-    - name: supervisorctl restart {{ bot.name }}_reconnection_loop
+    - name: supervisorctl restart {{ bot.name }}_{{ server_address|replace(".", "_") }}_reconnection_loop
     - require:
-      - file: /etc/supervisor/conf.d/{{ bot.name }}.conf
+      - file: /etc/supervisor/conf.d/{{ bot.name }}_{{ server_address|replace(".", "_") }}.conf
 {% endfor %}
 
 /etc/supervisor/conf.d/{{ bot.name }}.conf:
