@@ -12,7 +12,7 @@ ii-bot_pip_pkg:
     - names:
       - feedstail
       - pipetk
-      - icerockettail>=0.1.2
+      - icerockettail>=0.1.3
     - require:
       - pkg: ii-bot_pkg
 
