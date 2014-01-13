@@ -58,7 +58,7 @@ ii:
       rss: {{ rss }}
       server_address: {{ server_address }}
     - watch_in:
-      - cmd: {{ bot.name }}_{{ server_address|replace(".", "_") }}_rss_{{ name }}
+      - cmd: {{ bot.name }}_{{ server_address|replace(".", "_") }}_rss_{{ rss.name }}
     - require_in:
       - file: /etc/supervisor/conf.d/{{ bot.name }}.conf
 
