@@ -68,8 +68,30 @@ ii:
     - name: supervisorctl restart {{ bot.name }}_{{ server_address|replace(".", "_") }}_rss_{{ rss.name }}
     - require:
       - file: /etc/supervisor/conf.d/{{ bot.name }}.conf
-
 {% endfor %}
+
+{% for search in server.get("twitter_search", []) %}
+/var/ii/{{ bot.name }}/twitter_search_{{ search.name }}_{{ server_address|replace(".", "_") }}.sh:
+  file.managed:
+    - source: salt://ii-bot/twitter_search.sh
+    - user: ii
+    - group: ii
+    - template: jinja
+    - context:
+      search: {{ search }}
+      server_address: {{ server_address }}
+    - watch_in:
+      - cmd: {{ bot.name }}_{{ server_address|replace(".", "_") }}_twitter_search_{{ search.name }}
+    - require_in:
+      - file: /etc/supervisor/conf.d/{{ bot.name }}.conf
+
+{{ bot.name }}_{{ server_address|replace(".", "_") }}_twitter_search_{{ search.name }}:
+  cmd.wait:
+    - name: supervisorctl restart {{ bot.name }}_{{ server_address|replace(".", "_") }}_twitter_search_{{ search.name }}
+    - require:
+      - file: /etc/supervisor/conf.d/{{ bot.name }}.conf
+{% endfor %}
+
 {% endfor %}
 
 /etc/supervisor/conf.d/{{ bot.name }}.conf:
