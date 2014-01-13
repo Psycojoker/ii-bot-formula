@@ -15,7 +15,7 @@ ii:
     - makedirs: True
 
 {% for server_address, server in bot.get("servers", {}).items() %}
-{{ bot.name }}_{{ server_address|replace(".", "_")_reconnection_loop_script:
+{{ bot.name }}_{{ server_address|replace(".", "_") }}_reconnection_loop_script:
   file.managed:
     - name: /var/ii/{{ bot.name }}/reconnection_{{ server_address }}.sh
     - source: salt://ii-bot/reconnection.sh
