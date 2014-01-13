@@ -17,7 +17,7 @@ ii:
 {% for server_address, server in bot.get("servers", {}).items() %}
 {{ bot.name }}_{{ server_address|replace(".", "_") }}_reconnection_loop_script:
   file.managed:
-    - name: /var/ii/{{ bot.name }}/reconnection_{{ server_address }}.sh
+    - name: /var/ii/{{ bot.name }}/reconnection_{{ server_address|replace(".", "_") }}.sh
     - source: salt://ii-bot/reconnection.sh
     - template: jinja
     - user: ii
