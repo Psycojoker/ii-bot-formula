@@ -33,7 +33,7 @@ ii:
   cmd.wait:
     - name: supervisorctl restart {{ bot.name }}_{{ server_address|replace(".", "_") }}_reconnection_loop
     - require:
-      - file: /etc/supervisor/conf.d/{{ bot.name }}_{{ server_address|replace(".", "_") }}.conf
+      - file: /etc/supervisor/conf.d/{{ bot.name }}.conf
 {% endfor %}
 
 /etc/supervisor/conf.d/{{ bot.name }}.conf:
