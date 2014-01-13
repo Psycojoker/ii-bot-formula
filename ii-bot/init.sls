@@ -62,6 +62,12 @@ ii:
     - require_in:
       - file: /etc/supervisor/conf.d/{{ bot.name }}.conf
 
+{{ bot.name }}_{{ server_address|replace(".", "_") }}_rss_{{ rss.name }}:
+  cmd.wait:
+    - name: supervisorctl restart {{ bot.name }}_{{ server_address|replace(".", "_") }}_rss_{{ rss.name }}
+    - require:
+      - file: /etc/supervisor/conf.d/{{ bot.name }}.conf
+
 {% endfor %}
 {% endfor %}
 
