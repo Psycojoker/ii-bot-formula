@@ -46,6 +46,23 @@ ii:
     - name: supervisorctl restart {{ bot.name }}_{{ server_address|replace(".", "_") }}_reconnection_loop
     - require:
       - file: /etc/supervisor/conf.d/{{ bot.name }}.conf
+
+{% for rss in server.get("rss", []) %}
+/var/ii/{{ bot.name }}/rss_{{ rss.name }}_{{ server_address|replace(".", "_") }}.sh:
+  file.managed:
+    - source: salt://ii-bot/rss.sh
+    - user: ii
+    - group: ii
+    - template: jinja
+    - context:
+      rss: {{ rss }}
+      server_address: {{ server_address }}
+    - watch_in:
+      - cmd: {{ bot.name }}_{{ server_address|replace(".", "_") }}_rss_{{ name }}
+    - require_in:
+      - file: /etc/supervisor/conf.d/{{ bot.name }}.conf
+
+{% endfor %}
 {% endfor %}
 
 /etc/supervisor/conf.d/{{ bot.name }}.conf:
