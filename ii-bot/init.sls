@@ -6,6 +6,7 @@ ii-bot_pkg:
     - pkgs:
       - ii
       - python-pip
+      - icerockettail
 
 ii-bot_pip_pkg:
   pip.installed:
