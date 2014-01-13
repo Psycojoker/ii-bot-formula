@@ -3,7 +3,17 @@ include:
 
 ii-bot_pkg:
   pkg.installed:
-    - name: ii
+    - pkgs:
+      - ii
+      - python-pip
+
+ii-bot_pip_pkg:
+  pip.installed:
+    - names:
+      - feedstail
+      - pipetk
+    - require:
+      - pkg: ii-bot_pkg
 
 ii:
   user.present
