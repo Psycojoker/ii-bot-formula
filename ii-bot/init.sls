@@ -49,7 +49,7 @@ ii:
     - require:
       - file: /etc/supervisor/conf.d/{{ bot_name }}.conf
 
-{% for rss_name, rss in server.get("rss", []) %}
+{% for rss_name, rss in server.get("rss", {}).items() %}
 /var/ii/{{ bot_name }}/rss_{{ rss_name }}_{{ server_address|replace(".", "_") }}.sh:
   file.managed:
     - source: salt://ii-bot/rss.sh
