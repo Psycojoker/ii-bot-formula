@@ -9,6 +9,6 @@ do
         -i "irc" \
         -s "{{ server_address }}" \
         -p "6667" \
-        -n "{{ bot.name }}" \
-        -f "{{ bot.name }}"
+        -n "{{ bot_name }}" \
+        -f "{{ bot_name }}"
 done
