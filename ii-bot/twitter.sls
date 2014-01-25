@@ -7,3 +7,4 @@ supervisorctl restart {{ bot_name }}_{{ server_address|replace(".", "_") }}_twit
     - require:
       - file: /etc/supervisor/conf.d/{{ bot_name }}.conf
 {% endfor %}
+{% endfor %}
