@@ -22,4 +22,13 @@ ii-bots:
           some_unique_name:
             query: chocolate OR icecream
             chan: chan2
+        twitter:
+          some_unique_name_like_the_account_one:
+            oauth_access_token: <the stuff given by twitter, use ii-twitter-register cli to have it>
+            oauth_access_secret: <same>
+            chans:
+              - chan1
+              - chan2
 ```
+
+Note: everytime you see "some_unique_name*" this mean that you can put as many key as you want.
