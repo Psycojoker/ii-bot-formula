@@ -13,7 +13,7 @@ ii-bot_pip_pkg:
       - feedstail
       - pipetk
       - icerockettail>=0.1.3
-      - ii-twitter
+      - ii-twitter>=0.1.1
     - require:
       - pkg: ii-bot_pkg
 
@@ -52,6 +52,7 @@ ii:
 
 {% include "ii-bot/rss.sls" %}
 {% include "ii-bot/twitter_search.sls" %}
+{% include "ii-bot/twitter.sls" %}
 {% endfor %}
 
 /etc/supervisor/conf.d/{{ bot_name }}.conf:
