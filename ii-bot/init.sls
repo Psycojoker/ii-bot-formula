@@ -13,6 +13,7 @@ ii-bot_pip_pkg:
       - feedstail
       - pipetk
       - icerockettail>=0.1.3
+      - ii-twitter
     - require:
       - pkg: ii-bot_pkg
 
